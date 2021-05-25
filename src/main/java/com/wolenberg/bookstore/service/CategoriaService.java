@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wolenberg.bookstore.domain.Categoria;
+import com.wolenberg.bookstore.dtos.CategoriaDTO;
 import com.wolenberg.bookstore.repositories.CategoriaRepository;
 import com.wolenberg.bookstore.service.exceptions.ObjectNotfoundException;
 
@@ -32,4 +33,12 @@ public class CategoriaService {
 		obj.setId(null);
 		return repository.save(obj);
 	}
+	
+	public Categoria update(Integer id, CategoriaDTO objDto) {
+		Categoria obj = findbyId(id);
+		obj.setNome(objDto.getNome());
+		obj.setDescricao(objDto.getDescricao());
+		return repository.save(obj);
+	}
+	
 }
