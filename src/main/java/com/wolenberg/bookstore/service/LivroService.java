@@ -17,7 +17,7 @@ public class LivroService {
 
 	@Autowired
 	private LivroRepository repository;
-	
+
 	@Autowired
 	private CategoriaService categoriaService;
 
@@ -32,7 +32,7 @@ public class LivroService {
 	public List<Livro> findAll(Integer id_cat) {
 		categoriaService.findbyId(id_cat);
 		return repository.findAllByCategoria(id_cat);
-		
+
 	}
 
 	public Livro create(Livro obj) {
@@ -55,6 +55,19 @@ public class LivroService {
 			throw new DataIntegrityViolationException("Livro não pode ser deletada! Possui livros associados");
 		}
 
+	}
+
+	public Livro update(Integer id, Livro obj) {
+		Livro newObj = findbyId(id);
+		updateData(newObj, obj);
+		return repository.save(newObj);
+	}
+
+	private void updateData(Livro newObj, Livro obj) {
+
+		newObj.setTitulo(obj.getTitulo());
+		newObj.setNomeAutor(obj.getNomeAutor());
+		newObj.setTexto(obj.getTexto());
 	}
 
 }
