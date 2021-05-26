@@ -108,4 +108,26 @@ public class Livro implements Serializable {
 		return true;
 	}
 
+	public String getNome() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getDescricao() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setNome(String nome) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setDescricao(String descricao) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 }
