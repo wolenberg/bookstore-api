@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wolenberg.bookstore.domain.Categoria;
 import com.wolenberg.bookstore.domain.Livro;
 import com.wolenberg.bookstore.dtos.LivroDTO;
 import com.wolenberg.bookstore.repositories.LivroRepository;
@@ -68,6 +69,14 @@ public class LivroService {
 		newObj.setTitulo(obj.getTitulo());
 		newObj.setNomeAutor(obj.getNomeAutor());
 		newObj.setTexto(obj.getTexto());
+	}
+
+	public Livro create(Integer id_cat, Livro obj) {
+
+		obj.setId(null);
+		Categoria cat = categoriaService.findbyId(id_cat);
+		obj.setCategoria(cat);
+		return repository.save(obj);
 	}
 
 }
